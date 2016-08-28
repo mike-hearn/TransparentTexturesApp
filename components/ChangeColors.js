@@ -19,7 +19,7 @@ class ChangeColors extends React.Component {
     return (
       <View style={{ flex: 1, justifyContent: 'center', backgroundColor: this.props.store.textureColor }}>
         <View style={styles.sliderContainer}>
-          <StyledText store={this.props.store}>Hue</StyledText>
+          <StyledText textColor={this.props.store.textColor}>Hue</StyledText>
           <LinearGradient
             colors={['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']}
             style={styles.linearGradient}
@@ -38,7 +38,7 @@ class ChangeColors extends React.Component {
         </View>
 
         <View style={styles.sliderContainer}>
-          <StyledText store={this.props.store}>Saturation</StyledText>
+          <StyledText textColor={this.props.store.textColor}>Saturation</StyledText>
           <LinearGradient
             colors={[
               `hsl(${this.props.store.textureHue},0%,${this.props.store.textureLuminance}%)`,
@@ -61,7 +61,7 @@ class ChangeColors extends React.Component {
         </View>
 
         <View style={styles.sliderContainer}>
-          <StyledText store={this.props.store}>Lightness</StyledText>
+          <StyledText textColor={this.props.store.textColor}>Lightness</StyledText>
           <LinearGradient
             colors={[
               `hsl(${this.props.store.textureHue},${this.props.store.textureSaturation}%, 0%)`,

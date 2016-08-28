@@ -50,5 +50,9 @@ export default class TTStore {
   @action setTextureLuminance(luminance) {
     this.textureLuminance = luminance;
   }
+
+  @action toggleNavHidden() {
+    this.navHidden = !this.navHidden;
+  }
 }
 

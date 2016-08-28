@@ -49,7 +49,7 @@ class TextureImage extends React.Component {
         >
           <StyledText
             style={styles.nestedText}
-            store={this.props.store}
+            textColor={this.props.store.textColor}
           >
             {this.props.textureName}
           </StyledText>
