@@ -3,7 +3,8 @@ import {
   Text,
   StyleSheet,
   Image,
-  TouchableHighlight
+  TouchableHighlight,
+  View,
 } from 'react-native';
 import { observer } from 'mobx-react/native';
 
@@ -14,18 +15,29 @@ const styles = StyleSheet.create({
   nestedText: {
     marginLeft: 12,
     marginTop: 20,
-    backgroundColor: 'transparent',
     fontSize: 20,
     fontFamily: 'Avenir Next',
     fontWeight: '500',
-    // textShadowColor: 'black',
-    // textShadowOffset: { width: 1, height: 1 },
-    // textShadowRadius: 10,
+  },
+  nestedTextAuthor: {
+    fontFamily: 'Avenir Next',
+    fontWeight: '500',
+    marginLeft: 12,
+    marginTop: 0,
   },
   textureImage: {
     height: 400,
     borderWidth: 1,
     borderColor: 'rgba(0,0,0,0.2)',
+    flex: 1,
+  },
+  innerContainer: {
+    flex: 1,
+  },
+  innerBottomContainer: {
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    padding: 10,
   },
 });
 
@@ -47,12 +59,28 @@ class TextureImage extends React.Component {
           source={{ uri: `${this.props.textureURI}` }}
           resizeMode={Image.resizeMode.repeat}
         >
-          <StyledText
-            style={styles.nestedText}
-            textColor={this.props.store.textColor}
-          >
-            {this.props.textureName}
-          </StyledText>
+          <View style={styles.innerContainer}>
+            <StyledText
+              style={styles.nestedText}
+              textColor={this.props.store.textColor}
+            >
+              {this.props.textureName}
+            </StyledText>
+            <StyledText
+              style={[styles.nestedTextAuthor, { fontSize: 15 }]}
+              textColor={this.props.store.textColor}
+            >
+              Created by {this.props.textureAuthor}
+            </StyledText>
+          </View>
+          <View style={[styles.innerContainer, styles.innerBottomContainer]}>
+            <StyledText
+              style={[styles.nestedText, { fontSize: 16 }]}
+              textColor={this.props.store.textColor}
+            >
+              Create Wallpaper
+            </StyledText>
+          </View>
         </Image>
       </TouchableHighlight>
     );
@@ -62,6 +90,7 @@ class TextureImage extends React.Component {
 
 TextureImage.propTypes = {
   textureName: React.PropTypes.string,
+  textureAuthor: React.PropTypes.string,
   textureURI: React.PropTypes.string,
   textureSlug: React.PropTypes.string,
   navigator: React.PropTypes.object,

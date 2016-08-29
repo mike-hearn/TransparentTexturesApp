@@ -21,7 +21,7 @@ const routeMap = ({textColor = 'white', statusBarHidden = false}) => ({
       >
         <StyledText
           textColor={textColor}
-          style={[styles.navText, styles.navBarButtonText]}
+          style={[styles.navText, styles.navTextLeft, styles.navBarButtonText]}
         >
           {previousRoute.title}
         </StyledText>
@@ -36,7 +36,7 @@ const routeMap = ({textColor = 'white', statusBarHidden = false}) => ({
         >
           <StyledText
             textColor={textColor}
-            style={[styles.navText, styles.navBarButtonText]}
+            style={[styles.navText, styles.navTextRight, styles.navBarButtonText]}
           >
             Colors
           </StyledText>
@@ -55,7 +55,7 @@ const routeMap = ({textColor = 'white', statusBarHidden = false}) => ({
       />
       <StyledText
         textColor={textColor}
-        style={[styles.navText, { fontSize: 16 }]}
+        style={[styles.navText, styles.navTextCenter, { fontSize: 16 }]}
       >
       {route.displayTitle ? route.displayTitle : route.title}
       </StyledText>
@@ -73,9 +73,20 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     flex: 1,
     padding: 1,
+    width: 100,
   },
   navText: {
-    marginTop: 6
+    marginTop: 6,
+    width: 200,
+  },
+  navTextLeft: {
+    textAlign: 'left',
+  },
+  navTextRight: {
+    textAlign: 'right',
+  },
+  navTextCenter: {
+    textAlign: 'center',
   }
 });
 
