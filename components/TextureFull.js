@@ -92,17 +92,15 @@ class TextureFull extends React.Component {
 
           </View>
         </Modal>
-        <ScrollView style={{ flex: 1, backgroundColor: store.textureColor }}>
-          <TouchableWithoutFeedback onPress={this.toggleNavAndButtonVisiblity.bind(this)} >
-            <View style={{ flex: 1, backgroundColor: store.textureColor, height: 900 }}>
-              <Image
-                style={{ flex: 1 }}
-                source={{ uri: `https://www.transparenttextures.com/patterns/${store.selectedTextureSlug}.png` }}
-                resizeMode={Image.resizeMode.repeat}
-              />
-            </View>
-          </TouchableWithoutFeedback>
-        </ScrollView>
+        <TouchableWithoutFeedback onPress={this.toggleNavAndButtonVisiblity.bind(this)} >
+          <View style={{ flex: 1, backgroundColor: store.textureColor }}>
+            <Image
+              style={{ flex: 1 }}
+              source={{ uri: `https://www.transparenttextures.com/patterns/${store.selectedTextureSlug}.png` }}
+              resizeMode={Image.resizeMode.repeat}
+            />
+          </View>
+        </TouchableWithoutFeedback>
         <TouchableOpacity onPress={this.takeScreenshot.bind(this)} style={{ marginBottom: this.state.marginBottom }}>
           <View style={[styles.buttonContainer]}>
             <StyledText style={{fontSize: 18, fontWeight: '600'}} textColor={store.textColor}>Create Wallpaper</StyledText>
