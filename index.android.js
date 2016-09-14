@@ -1,81 +1,32 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  View,
-  StatusBar,
-  Navigator,
-  TouchableOpacity,
+  Text,
+  View
 } from 'react-native';
-import { observer } from 'mobx-react/native';
-
-import NavigationBar from './components/HideableNavigationBar';
-
-import TextureImage from './components/TextureImage';
-import TextureList from './components/TextureList';
-import TextureFull from './components/TextureFull';
-import ChangeColors from './components/ChangeColors';
-
-import TextureStore from './store';
-
-const store = new TextureStore();
-
-const SCREEN_WIDTH = require('Dimensions').get('window').width;
-
-/**
- *  * Overwrite the default navigator scene config.
- *   * to use a wider area for back swiping.
- *    */
-const FloatFromRight = {
-  ...Navigator.SceneConfigs.FloatFromRight,
-  gestures: {
-    pop: {
-      ...Navigator.SceneConfigs.FloatFromRight.gestures.pop,
-      edgeHitWidth: SCREEN_WIDTH / 2,
-    },
-  },
-};
-
 
 class TransparentTexturesApp extends Component {
-
-  componentDidMount() {
-    if (!store.textureData) {
-      store.fetchTextureData();
-    }
-    console.log(store.textColor);
-  }
-
   render() {
     return (
-      <Navigator
-        ref='navigator'
-        initialRoute={{ title: 'Home', displayTitle: 'Transparent Textures', index: 0 }}
-        style={{ flex: 1, backgroundColor: store.textureColor }}
-        configureScene={() => FloatFromRight}
-        renderScene={(route, navigator) => {
-          switch (route.id) {
-            case 'whoa':
-              return (
-                <TextureFull store={store} navigator={navigator} />
-              );
-            case 'changeColors':
-              return <ChangeColors store={store} />;
-            default:
-              return (
-                <View style={styles.container}>
-                  <TextureList store={store} navigator={navigator} />
-                </View>
-              );
-          }
-        }}
-        navigationBar={
-          <NavigationBar
-            {...this.props}
-            store={store}
-          />
-        }
-      />
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.android.js
+        </Text>
+        <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
+          Shake or press menu button for dev menu
+        </Text>
+      </View>
     );
   }
 }
@@ -83,13 +34,20 @@ class TransparentTexturesApp extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
-  navBarButtonText: {
-    marginRight: 10,
-    marginLeft: 10,
-    flex: 1,
-    padding: 1,
-  }
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
 });
 
-AppRegistry.registerComponent('TransparentTexturesApp', () => observer(TransparentTexturesApp));
+AppRegistry.registerComponent('TransparentTexturesApp', () => TransparentTexturesApp);
