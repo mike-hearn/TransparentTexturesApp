@@ -55,7 +55,7 @@ class TransparentTexturesApp extends Component {
         configureScene={() => FloatFromRight}
         renderScene={(route, navigator) => {
           switch (route.id) {
-            case 'whoa':
+            case 'fulltexture':
               return (
                 <TextureFull store={store} navigator={navigator} />
               );

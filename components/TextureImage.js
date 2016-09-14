@@ -45,7 +45,7 @@ class TextureImage extends React.Component {
 
   handleTouch() {
     this.props.navigator.push({
-      id: 'whoa',
+      id: 'fulltexture',
       title: this.props.textureName
     });
     this.props.store.setSelectedTextureSlug(this.props.textureSlug);
